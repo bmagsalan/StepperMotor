@@ -1,0 +1,53 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executable files
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Makefile generated files
+Makefile.in
+# Makefile
+
+# Backup files
+*~
+*.bak
+*.swp
+*.tmp
+
+# Other files to ignore
+*.log
+*.csv
+*.dat
+*.txt
+*.bin
+
+# Ignore directories
+bin/
+obj/
+lib/
