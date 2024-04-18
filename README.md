@@ -1,45 +1,70 @@
 # StepperMotorLib
-## Setup
+A comprehensive guide to setting up and using the StepperMotor library on Raspberry Pi.
+
+## Prerequisites
+Ensure that your system is equipped with the necessary tools:
 ```bash
-# fetch the source
 sudo apt install -y git build-essential
+```
+
+## Setup
+### WiringPi Library
+First, fetch and install the WiringPi library:
+```bash
 git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi
 git checkout tags/3.2
-
-# build the package
 ./build debian
 sudo dpkg -i /home/pi/WiringPi/debian-template/wiringpi_3.2_arm64.deb
 ```
-## Build and Install
+
+## Build and Install StepperMotor Library
+Clone the StepperMotor repository and compile the source code:
 ```bash
 git clone git@github.com:bmagsalan/StepperMotor.git
 cd StepperMotor
 make
 sudo make install
-# Refresh lib cache
+# Refresh the library cache
 sudo ldconfig /usr/local/lib
 ```
-## Usage
-Add user to gpio they won't need `sudo` to run.
+
+## Configuration
+Add your user to the `gpio` group to allow operation without `sudo`:
 ```bash
 sudo usermod -a -G gpio pi
 newgrp gpio
 ```
-Example:
+
+## Usage
+### Compilation
+Compile your application with the following commands:
+```bash
+g++ -o test.bin main.cpp -lsteppermotor -lwiringPi
+```
+
+### Running the Application
+Execute your compiled application:
+```bash
+./test.bin
+```
+
+### Example
+Here is a simple example to control stepper motors using the library:
 ```c++
 #include <StepperMotor.h>
 #include <iostream>
 #include <string>
 
 int main() {
-    StepperMotor motor1(5, 6, 13, 19); // Motor 1 using GPIO BCM pin numbers
-    StepperMotor motor2(14, 15, 18, 23); // Motor 2 using GPIO BCM pin numbers
+    StepperMotor motor1(5, 6, 13, 19);
+    StepperMotor motor2(14, 15, 18, 23);
 
     std::string command;
     int steps, speed;
     bool ccw;
     std::string stepMode;
+
     std::cout << "Motor Control (commands: '1 start [steps] [cw/ccw] [speed] [full/half/wave]', '1 stop', '2 start [steps] [cw/ccw] [speed] [full/half/wave]', '2 stop', 'exit'):" << std::endl;
 
     while (true) {
@@ -70,13 +95,16 @@ int main() {
     return 0;
 }
 ```
-Buld it:
+
+### Example Command
+To control a motor:
 ```bash
-g++ -o test.bin main.cpp -lsteppermotor -lwiringPi
-./test.bin
-# Motor Control (commands: '1 start [steps] [cw/ccw] [speed] [full/half/wave]', '1 stop', '2 start [steps] [cw/ccw] [speed] [full/half/wave]', '2 stop', 'exit'):
-1 start 4096 cw 15 "full"
+1 start 4096 cw 15 full
 ```
-## Links
-* [wiringPi](https://github.com/WiringPi/WiringPi/releases/tag/3.2)
-* [RpiMotorLib](https://github.com/gavinlyonsrepo/RpiMotorLib)
+
+## Additional Resources
+For more information, visit the following links:
+- [WiringPi Release 3.2](https://github.com/WiringPi/WiringPi/releases/tag/3.2)
+- [RpiMotorLib](https://github.com/gavinlyonsrepo/RpiMotorLib)
+
+This guide ensures a smooth setup and operation of the StepperMotor library for users of all levels.
