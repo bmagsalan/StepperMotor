@@ -1,5 +1,9 @@
 # StepperMotorLib
 A comprehensive guide to setting up and using the StepperMotor library on Raspberry Pi.
+Test rig:
+* Raspberry Pi 5
+* 64-bit Bookworm
+* 2 x 28BYJ-48 motors
 
 ## Prerequisites
 Ensure that your system is equipped with the necessary tools:
