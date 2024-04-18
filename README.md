@@ -103,7 +103,7 @@ int main() {
 ### Example Command
 To control a motor:
 ```bash
-1 start 4096 cw 15 full
+1 start 4096 cw 15 "full"
 ```
 
 ## Additional Resources
