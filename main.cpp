@@ -1,33 +1,3 @@
-# StepperMotorLib
-## Setup
-```bash
-# fetch the source
-sudo apt install -y git build-essential
-git clone https://github.com/WiringPi/WiringPi.git
-cd WiringPi
-git checkout tags/3.2
-
-# build the package
-./build debian
-sudo dpkg -i /home/pi/WiringPi/debian-template/wiringpi_3.2_arm64.deb
-```
-## Build and Install
-```bash
-git clone git@github.com:bmagsalan/StepperMotor.git
-cd StepperMotor
-make
-sudo make install
-# Refresh lib cache
-sudo ldconfig /usr/local/lib
-```
-## Usage
-Add user to gpio they won't need `sudo` to run.
-```bash
-sudo usermod -a -G gpio pi
-newgrp gpio
-```
-Example:
-```c++
 #include <StepperMotor.h>
 #include <iostream>
 #include <string>
@@ -69,11 +39,3 @@ int main() {
 
     return 0;
 }
-```
-Buld it:
-```bash
-g++ -o test.bin main.cpp -lsteppermotor -lwiringPi
-./test.bin
-# Motor Control (commands: '1 start [steps] [cw/ccw] [speed] [full/half/wave]', '1 stop', '2 start [steps] [cw/ccw] [speed] [full/half/wave]', '2 stop', 'exit'):
-1 start 4096 cw 15 "full"
-```
