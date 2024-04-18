@@ -77,3 +77,6 @@ g++ -o test.bin main.cpp -lsteppermotor -lwiringPi
 # Motor Control (commands: '1 start [steps] [cw/ccw] [speed] [full/half/wave]', '1 stop', '2 start [steps] [cw/ccw] [speed] [full/half/wave]', '2 stop', 'exit'):
 1 start 4096 cw 15 "full"
 ```
+## Links
+* [wiringPi](https://github.com/WiringPi/WiringPi/releases/tag/3.2)
+* [RpiMotorLib](https://github.com/gavinlyonsrepo/RpiMotorLib)
