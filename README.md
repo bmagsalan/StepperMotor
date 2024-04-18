@@ -21,7 +21,7 @@ sudo dpkg -i /home/pi/WiringPi/debian-template/wiringpi_3.2_arm64.deb
 ## Build and Install StepperMotor Library
 Clone the StepperMotor repository and compile the source code:
 ```bash
-git clone git@github.com:bmagsalan/StepperMotor.git
+git clone https://github.com/bmagsalan/StepperMotor.git
 cd StepperMotor
 make
 sudo make install
